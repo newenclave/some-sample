@@ -188,7 +188,7 @@ void mm_array_copy_elements( void *dst, void *src,
 
 int mm_array_push_back2( struct mm_array *mar, void *element, size_t count)
 {
-    int res = mm_block_concat(mar->mmblock_, element,
+    int res = mm_block_append(mar->mmblock_, element,
                               MM_ELEMENTS_SIZE(mar, count));
     return res;
 }

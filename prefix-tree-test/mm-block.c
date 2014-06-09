@@ -247,7 +247,7 @@ void mm_block_zero(struct mm_block *mb)
     mm_block_memset( mb->data_.ptr_, 0, mb->used_ );
 }
 
-int mm_block_concat(struct mm_block *lmb, const void *data, size_t len)
+int mm_block_append(struct mm_block *lmb, const void *data, size_t len)
 {
     size_t old_used = lmb->used_;
     if( 0 == mm_block_resize2(lmb, old_used + len, 0) ) return 0;
@@ -255,9 +255,9 @@ int mm_block_concat(struct mm_block *lmb, const void *data, size_t len)
     return 1;
 }
 
-int mm_block_concat2(struct mm_block *lmb, const struct mm_block *rmb)
+int mm_block_append2(struct mm_block *lmb, const struct mm_block *rmb)
 {
-    return mm_block_concat(lmb, rmb->data_.ptr_, rmb->used_);
+    return mm_block_append(lmb, rmb->data_.ptr_, rmb->used_);
 }
 
 int mm_block_push_back(struct mm_block *mb, char c)

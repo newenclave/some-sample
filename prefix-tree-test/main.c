@@ -97,9 +97,9 @@ int print_colored_line( const struct prefix_tree *trie, const char *line )
                 prefix_tree_get_next( trie, (const void **)&p, &len );
 
         if( value ) {
-            mm_block_concat( tmp_str, value->color_ptr_, value->length_ );
-            mm_block_concat( tmp_str, old_p, p - old_p );
-            mm_block_concat( tmp_str, cp_none, none_length );
+            mm_block_append( tmp_str, value->color_ptr_, value->length_ );
+            mm_block_append( tmp_str, old_p, p - old_p );
+            mm_block_append( tmp_str, cp_none, none_length );
        } else {
             mm_block_push_back( tmp_str, *p++ );
             --len;

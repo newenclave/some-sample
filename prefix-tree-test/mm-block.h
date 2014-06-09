@@ -30,8 +30,8 @@ void mm_block_clear   (struct mm_block *mb);
 void mm_block_swap    (struct mm_block *lmb, struct mm_block *rmb);
 void mm_block_zero    (struct mm_block *mb);
 
-int mm_block_concat   (struct mm_block *mb, const void *data, size_t len);
-int mm_block_concat2  (struct mm_block *mb, const struct mm_block *cmb);
+int mm_block_append   (struct mm_block *mb, const void *data, size_t len);
+int mm_block_append2  (struct mm_block *mb, const struct mm_block *cmb);
 
 int    mm_block_push_back( struct mm_block *mb, char c);
 void  *mm_block_create_back( struct mm_block *mb, size_t count );
