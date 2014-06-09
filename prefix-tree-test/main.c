@@ -75,7 +75,7 @@ int fill_trie( struct prefix_tree *trie )
 
 int print_colored_line( const struct prefix_tree *trie, const char *line )
 {
-    struct mm_block *tmp_str = mm_block_new_reserved( 1024 );
+    struct mm_block *tmp_str = mm_block_new_reserved( 128 );
     int result = 1;
 
     const size_t none_length = strlen(cp_none);
