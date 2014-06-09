@@ -230,7 +230,14 @@ int prefix_tree_insert( struct prefix_tree *pt,
             element = mm_array_bin_insert( key_map, &tmp, tools->cmp_ );
             result = (element != NULL);
         } else {
-            if( 0 == length && !(element->flags_ & PT_FLAG_FINAL)) {
+            if( 0 == length ) {
+                if(  element->data_
+                     && (element->flags_ & PT_FLAG_FINAL)
+                     && pt->free_ )
+                {
+                    pt->free_( element->data_ );
+                }
+
                 element->data_   = data;
                 element->flags_ |= PT_FLAG_FINAL;
                 result = 1;

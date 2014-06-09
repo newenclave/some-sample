@@ -21,6 +21,7 @@ static struct {
      ,{ "purple",     "\x1b[35;1m" }
      ,{ "lightblue",  "\x1b[36;1m" }
      ,{ "white",      "\x1b[37;1m" }
+     ,{ "white",      "\x1b[37;1m" }
 
      ,{ "Black",      "\x1b[30;1m" }
      ,{ "Red",        "\x1b[31;1m" }
