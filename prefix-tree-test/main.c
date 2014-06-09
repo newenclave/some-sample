@@ -4,8 +4,6 @@
 #include "prefix-tree.h"
 #include "mm-block.h"
 
-#define COLOR_PAIR( Name, Value ) { Name, Value }
-
 static struct {
 
     const char *name_;
@@ -13,27 +11,27 @@ static struct {
 
 } const global_colors[ ] = {
 
-      COLOR_PAIR( "black",      "\x1b[30;1m" )
-     ,COLOR_PAIR( "red",        "\x1b[31;1m" )
-     ,COLOR_PAIR( "green",      "\x1b[32;1m" )
-     ,COLOR_PAIR( "yellow",     "\x1b[1;33m" )
-     ,COLOR_PAIR( "orange",     "\x1b[33;1m" )
-     ,COLOR_PAIR( "brown",      "\x1b[0;33m" )
-     ,COLOR_PAIR( "blue",       "\x1b[34;1m" )
-     ,COLOR_PAIR( "purple",     "\x1b[35;1m" )
-     ,COLOR_PAIR( "lightblue",  "\x1b[36;1m" )
-     ,COLOR_PAIR( "white",      "\x1b[37;1m" )
+      { "black",      "\x1b[30;1m" }
+     ,{ "red",        "\x1b[31;1m" }
+     ,{ "green",      "\x1b[32;1m" }
+     ,{ "yellow",     "\x1b[1;33m" }
+     ,{ "orange",     "\x1b[33;1m" }
+     ,{ "brown",      "\x1b[0;33m" }
+     ,{ "blue",       "\x1b[34;1m" }
+     ,{ "purple",     "\x1b[35;1m" }
+     ,{ "lightblue",  "\x1b[36;1m" }
+     ,{ "white",      "\x1b[37;1m" }
 
-     ,COLOR_PAIR( "Black",      "\x1b[30;1m" )
-     ,COLOR_PAIR( "Red",        "\x1b[31;1m" )
-     ,COLOR_PAIR( "Green",      "\x1b[32;1m" )
-     ,COLOR_PAIR( "Yellow",     "\x1b[1;33m" )
-     ,COLOR_PAIR( "Orange",     "\x1b[33;1m" )
-     ,COLOR_PAIR( "Brown",      "\x1b[0;33m" )
-     ,COLOR_PAIR( "Blue",       "\x1b[34;1m" )
-     ,COLOR_PAIR( "Purple",     "\x1b[35;1m" )
-     ,COLOR_PAIR( "Lightblue",  "\x1b[36;1m" )
-     ,COLOR_PAIR( "White",      "\x1b[37;1m" )
+     ,{ "Black",      "\x1b[30;1m" }
+     ,{ "Red",        "\x1b[31;1m" }
+     ,{ "Green",      "\x1b[32;1m" }
+     ,{ "Yellow",     "\x1b[1;33m" }
+     ,{ "Orange",     "\x1b[33;1m" }
+     ,{ "Brown",      "\x1b[0;33m" }
+     ,{ "Blue",       "\x1b[34;1m" }
+     ,{ "Purple",     "\x1b[35;1m" }
+     ,{ "Lightblue",  "\x1b[36;1m" }
+     ,{ "White",      "\x1b[37;1m" }
 
 };
 
