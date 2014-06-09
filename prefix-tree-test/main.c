@@ -4,27 +4,43 @@
 #include "prefix-tree.h"
 #include "mm-block.h"
 
-static const char * cp_black           = "\x1b[30;1m";
-static const char * cp_red             = "\x1b[31;1m";
-static const char * cp_green           = "\x1b[32;1m";
-static const char * cp_yellow          = "\x1b[33;1m";
-static const char * cp_orange          = "\x1b[33;1m";
-static const char * cp_blue            = "\x1b[34;1m";
-static const char * cp_purple          = "\x1b[35;1m";
-static const char * cp_lightblue       = "\x1b[36;1m";
-static const char * cp_white           = "\x1b[37;1m";
+#define COLOR_PAIR( Name, Value ) { Name, Value }
+
+static struct {
+
+    const char *name_;
+    const char *value_;
+
+} const global_colors[ ] = {
+
+      COLOR_PAIR( "black",      "\x1b[30;1m" )
+     ,COLOR_PAIR( "red",        "\x1b[31;1m" )
+     ,COLOR_PAIR( "green",      "\x1b[32;1m" )
+     ,COLOR_PAIR( "yellow",     "\x1b[1;33m" )
+     ,COLOR_PAIR( "orange",     "\x1b[33;1m" )
+     ,COLOR_PAIR( "brown",      "\x1b[0;33m" )
+     ,COLOR_PAIR( "blue",       "\x1b[34;1m" )
+     ,COLOR_PAIR( "purple",     "\x1b[35;1m" )
+     ,COLOR_PAIR( "lightblue",  "\x1b[36;1m" )
+     ,COLOR_PAIR( "white",      "\x1b[37;1m" )
+
+     ,COLOR_PAIR( "Black",      "\x1b[30;1m" )
+     ,COLOR_PAIR( "Red",        "\x1b[31;1m" )
+     ,COLOR_PAIR( "Green",      "\x1b[32;1m" )
+     ,COLOR_PAIR( "Yellow",     "\x1b[1;33m" )
+     ,COLOR_PAIR( "Orange",     "\x1b[33;1m" )
+     ,COLOR_PAIR( "Brown",      "\x1b[0;33m" )
+     ,COLOR_PAIR( "Blue",       "\x1b[34;1m" )
+     ,COLOR_PAIR( "Purple",     "\x1b[35;1m" )
+     ,COLOR_PAIR( "Lightblue",  "\x1b[36;1m" )
+     ,COLOR_PAIR( "White",      "\x1b[37;1m" )
+
+};
+
+static const size_t global_count =
+             sizeof(global_colors) / sizeof(global_colors[0]);
 
 static const char * cp_none            = "\x1b[0m";
-
-static const char * cn_black           = "black";
-static const char * cn_red             = "red";
-static const char * cn_green           = "green";
-static const char * cn_yellow          = "yellow";
-static const char * cn_orange          = "orange";
-static const char * cn_blue            = "blue";
-static const char * cn_purple          = "purple";
-static const char * cn_lightblue       = "lightblue";
-static const char * cn_white           = "white";
 
 struct value_data {
     const char *color_ptr_;
@@ -43,29 +59,14 @@ struct value_data *create_data( const char *color )
 
 int fill_trie( struct prefix_tree *trie )
 {
-    struct color_pair {
-        const char *name_;
-        const char *value_;
-    } const colors[ ] = {
-         { cn_black,     cp_black     }
-        ,{ cn_red,       cp_red       }
-        ,{ cn_green,     cp_green     }
-        ,{ cn_yellow,    cp_yellow    }
-        ,{ cn_orange,    cp_orange    }
-        ,{ cn_blue,      cp_blue      }
-        ,{ cn_purple,    cp_purple    }
-        ,{ cn_lightblue, cp_lightblue }
-        ,{ cn_white,     cp_white     }
-    };
 
-    const size_t csize = sizeof( colors ) / sizeof(colors[0]);
     size_t i;
     int result = 1;
 
-    for( i=0; i<csize && result; ++i ) {
-        struct value_data *value = create_data( colors[i].value_ );
+    for( i=0; i<global_count && result; ++i ) {
+        struct value_data *value = create_data( global_colors[i].value_ );
         if( value ) {
-            prefix_tree_insert_string( trie, colors[i].name_, value );
+            prefix_tree_insert_string( trie, global_colors[i].name_, value );
         } else {
             result = 0;
         }
