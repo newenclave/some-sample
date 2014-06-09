@@ -1,6 +1,6 @@
-	Eight Pretty Colors
+    Eight Pretty Colors
     Song Lyrics and Sound Clip
-	    Ron Brown 
+        Ron Brown
 
 Red, green, yellow, blue
 Orange, black, brown, purple
@@ -25,4 +25,7 @@ Coloring is fun!
 Red, green, yellow, blue
 Orange, black, brown, purple
 Eight pretty colors in my crayon box.
+
+"black", "red", "green", "yellow", "orange",
+"brown", "blue", "purple", "lightblue", "white"
 
