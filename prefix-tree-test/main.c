@@ -40,7 +40,7 @@ static struct {
 static const size_t global_count =
              sizeof(global_colors) / sizeof(global_colors[0]);
 
-static const char * cp_none            = "\x1b[0m";
+static const char * cp_none = "\x1b[0m";
 
 struct value_data {
     const char *color_ptr_;
