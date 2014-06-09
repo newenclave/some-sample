@@ -131,8 +131,8 @@ int main( void )
 
         char block[4096 + 1];
 
-        while( fgets( block, 4096, stdin ) ) {
-            print_colored_line( trie, &block[0] );
+        while( fgets( block, 4096, stdin ) && res ) {
+            res = print_colored_line( trie, &block[0] );
         }
 
     } else {
